@@ -21,7 +21,7 @@ public class Patient {
     public String toString(){
         //Returns formatted string so that it is printed when the 
         //Patient object is 'Patient.toString'ed 
-        return "Patient ID: " + patientID +
+        return "\nPatient ID: " + patientID +
                 "\nName:" + name +
                 "\nCheck In Date:" + checkInDate + 
                 "\nAssigned Medical Personnel:" + assignedPersonnel;

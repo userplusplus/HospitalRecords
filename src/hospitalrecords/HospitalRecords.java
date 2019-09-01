@@ -19,8 +19,7 @@ public class HospitalRecords {
     static ArrayList<Patient> patientRecords = new ArrayList<>();
     
     public static void obtainRecords(){
-        String path = "C:\\Users\\awall\\Documents\\NetBeansProjects"
-                + "\\HospitalRecords\\ListOfPatients.txt";
+        String path = "ListOfPatients.txt";
         //Use path to the ListOfPatients.txt here
         
         LineNumberReader lr = null;
@@ -47,14 +46,13 @@ public class HospitalRecords {
                 //dividing one file line by commas and assigning to array
                 
                 pat = new Patient(oneRecord[0], oneRecord[1],
-                oneRecord[2], oneRecord[3]);
+                oneRecord[2], oneRecord[3]);//creating patient objects
                 
-                patientRecords.add(pat);
-                System.out.println(pat); //adding patient to the ArrayList
-                //For future me: why does pat print normally, but when pat
-                //is added to patient records, it prints a whole lot of
-                //random crap?
+                patientRecords.add(pat);//adding patients to the ArrayList
             }
+                
+            System.out.println(patientRecords); 
+            
         }
         catch(IOException ioe){
             System.out.println("IOExcception occured");
