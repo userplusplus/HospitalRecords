@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.LineNumberReader;
+import java.util.Scanner;
 
 public class HospitalRecords {
     
@@ -50,9 +51,6 @@ public class HospitalRecords {
                 
                 patientRecords.add(pat);//adding patients to the ArrayList
             }
-                
-            System.out.println(patientRecords); 
-            
         }
         catch(IOException ioe){
             System.out.println("IOExcception occured");
@@ -61,6 +59,58 @@ public class HospitalRecords {
     
     public static void main(String[] args){
         HospitalRecords.obtainRecords();
+        //Get the reocrds and put them into an arraylist
+        
+        System.out.println("**Patient records have been recorded"
+                        + " successfully**"); 
+        
+        Scanner sc = new Scanner(System.in);
+        //Set up scanner
+        
+        while(true){
+            System.out.println("Press S for search, Press E for exit\n"); 
+            String userInput = sc.next(); //obtain user input
+            
+            if("E".equals(userInput)){
+                 System.out.println("Bye...");
+                 break;
+                 
+            } else if("S".equals(userInput)){
+                System.out.println("Enter Patient ID to search");
+                userInput = sc.next();//Get user input
+                
+                for (int i = 0; i < patientRecords.size(); i++) {
+                    
+                    if(patientRecords.get(i).getPatientID().equals(userInput)){
+                        
+                        System.out.println(patientRecords.get(i).toString());
+                        System.out.println("\nWould you like to remove the "
+                                + "patient's record(s)?\nY or N?");
+                        userInput = sc.next();//Get user input
+                        
+                        if("Y".equals(userInput)){
+                            patientRecords.remove(i);
+                            System.out.println("\nRecord(s) removed successfully");
+                            break;
+                            
+                        } else if(!"N".equals(userInput)){
+                            //Not a "Y" or "N"
+                            System.out.println("Input not recognized,"
+                                    + " please try again.");
+                        }
+                        
+                    }else if(i + 1 == patientRecords.size()){
+                        //true at end of loop and if there was no match
+                        System.out.println("\nThe search found no matching patient.");
+                    }
+                    
+                }
+                
+            } else {
+                //Input is neither "E" or "S"
+                System.out.println("Input not recognized, please try again.");
+            }
+        }
     }
 
 }

@@ -12,10 +12,15 @@ package hospitalrecords;
 public class Patient {
     
     //Class fields
-    private String patientID;
-    private String name;
-    private String checkInDate;
-    private String assignedPersonnel;
+    private final String patientID;
+    private final String name;
+    private final String checkInDate;
+    private final String assignedPersonnel;
+    
+    //Getter
+    public String getPatientID(){
+        return patientID;
+    }
     
     @Override
     public String toString(){
@@ -26,8 +31,6 @@ public class Patient {
                 "\nCheck In Date:" + checkInDate + 
                 "\nAssigned Medical Personnel:" + assignedPersonnel;
     }
-    
-    //Class constructor, pass i
 
     /**
      * A constructor for creating a Patient.
