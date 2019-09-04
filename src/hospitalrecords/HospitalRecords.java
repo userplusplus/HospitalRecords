@@ -5,10 +5,6 @@
  */
 package hospitalrecords;
 
-/**
- *
- * @author awall
- */
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,29 +67,33 @@ public class HospitalRecords {
             System.out.println("Press S for search, Press E for exit\n"); 
             String userInput = sc.next(); //obtain user input
             
-            if("E".equals(userInput)){
+            if("E".equalsIgnoreCase(userInput)){
                  System.out.println("Bye...");
                  break;
+                 //End while loop, "exiting" the program
                  
-            } else if("S".equals(userInput)){
+            } else if("S".equalsIgnoreCase(userInput)){
                 System.out.println("Enter Patient ID to search");
                 userInput = sc.next();//Get user input
                 
                 for (int i = 0; i < patientRecords.size(); i++) {
                     
-                    if(patientRecords.get(i).getPatientID().equals(userInput)){
+                    if(patientRecords.get(i).getPatientID()
+                            .equalsIgnoreCase(userInput)){
+                        //If the patient record ID matches the user input
                         
                         System.out.println(patientRecords.get(i).toString());
                         System.out.println("\nWould you like to remove the "
                                 + "patient's record(s)?\nY or N?");
                         userInput = sc.next();//Get user input
                         
-                        if("Y".equals(userInput)){
+                        if("Y".equalsIgnoreCase(userInput)){
                             patientRecords.remove(i);
                             System.out.println("\nRecord(s) removed successfully");
-                            break;
+                            break; //break out of for loop, back to S to search
+                            // and E to exit
                             
-                        } else if(!"N".equals(userInput)){
+                        } else if(!"N".equalsIgnoreCase(userInput)){
                             //Not a "Y" or "N"
                             System.out.println("Input not recognized,"
                                     + " please try again.");
@@ -101,7 +101,8 @@ public class HospitalRecords {
                         
                     }else if(i + 1 == patientRecords.size()){
                         //true at end of loop and if there was no match
-                        System.out.println("\nThe search found no matching patient.");
+                        System.out.println("\nThe search found no"
+                                + " matching patient.");
                     }
                     
                 }

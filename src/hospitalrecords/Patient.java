@@ -5,17 +5,13 @@
  */
 package hospitalrecords;
 
-/**
- *
- * @author Dominic Martindale
- */
 public class Patient {
     
     //Class fields
-    private final String patientID;
-    private final String name;
-    private final String checkInDate;
-    private final String assignedPersonnel;
+    private String patientID;
+    private String name;
+    private String checkInDate;
+    private String assignedPersonnel;
     
     //Getter
     public String getPatientID(){
